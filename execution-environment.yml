@@ -3,7 +3,7 @@ version: 3
 
 images:
   base_image:
-    name: registry.access.redhat.com/ubi9/python-312:latest
+    name: quay.io/centos/centos:stream9
 
 dependencies:
   ansible_core:
@@ -16,5 +16,6 @@ dependencies:
 
 additional_build_steps:
   prepend_base:
-    - RUN dnf upgrade -y && dnf clean all
+    - RUN dnf upgrade -y && dnf install -y python3.12 && dnf clean all
     - RUN ln -sf /usr/bin/python3.12 /usr/bin/python3
+    - RUN python3.12 -m ensurepip && python3.12 -m pip install --upgrade pip

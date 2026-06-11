@@ -1,6 +1,6 @@
 # AWX Execution Environment
 
-A custom [Ansible Execution Environment](https://docs.ansible.com/automation-controller/latest/html/userguide/execution_environments.html) built on UBI 9 / Python 3.12.
+A custom [Ansible Execution Environment](https://docs.ansible.com/automation-controller/latest/html/userguide/execution_environments.html) built on CentOS Stream 9 / Python 3.12.
 
 ## Contents
 
@@ -14,11 +14,11 @@ A custom [Ansible Execution Environment](https://docs.ansible.com/automation-con
 ## Build
 
 ```bash
-ansible-builder build -t awx-ee-mee:latest
+ansible-builder build -t docker.io/floo/awx-ee:1.2
 ```
 
 Requires [ansible-builder](https://ansible-builder.readthedocs.io/) (`pip install ansible-builder`).
 
 ## Base image
 
-`registry.access.redhat.com/ubi9/python-312:latest` with `ansible-core >= 2.17` and `ansible-runner`.
+`quay.io/centos/centos:stream9` with `python3.12`, `ansible-core >= 2.17`, and `ansible-runner`.
